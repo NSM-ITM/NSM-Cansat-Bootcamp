@@ -2,7 +2,7 @@
 
 - LED Blink
 - Static Serial Output
-- Temperature Read (Celsicus/Fahrenheit)
+- Temperature Read (Celcius/Fahrenheit)
 - LoRa Send/Receive
 - LoRa Functional Task (Group work)
 
