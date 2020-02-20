@@ -7,7 +7,7 @@
  */
 
 #include <LoRa.h>
-#define lora_frequency 433E6;
+#define lora_frequency 433E6
 
 void setup() {
   

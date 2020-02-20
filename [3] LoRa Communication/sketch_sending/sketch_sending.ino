@@ -7,7 +7,8 @@
  */
 
 #include <LoRa.h>
-#define lora_frequency 433E6;
+#define lora_frequency 433E6
+#define lora_id "NSM_1"
 
 unsigned long start_time_counter;
 
@@ -33,6 +34,8 @@ void loop() {
   LoRa.beginPacket();
   LoRa.print("Recent Broadcasting Time: ");
   LoRa.print(start_time_counter);
+  LoRa.print(" - ");
+  LoRa.print(lora_id);
   LoRa.endPacket();
 
   Serial.print("Recent Broadcasting Time: ");
