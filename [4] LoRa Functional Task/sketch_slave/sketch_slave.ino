@@ -22,13 +22,14 @@ void setup() {
   while (!Serial);
 
   Serial.println("LoRa Communication - Slave");
-
+  
   if (!LoRa.begin(lora_frequency)) {
     Serial.println("LoRa Communication - Start Failed");
     while (1);
   }
   
   LoRa.onReceive(translate_received_transaction);
+  LoRa.receive();
   
 }
 
@@ -111,7 +112,6 @@ long factorial_function(long result, int remaining) {
   }
 
 }
-
 
 String get_field_by_position(String data, char separator, int index) {
   int found = 0;
