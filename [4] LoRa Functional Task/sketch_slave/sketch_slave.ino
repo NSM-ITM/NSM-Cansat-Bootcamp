@@ -17,18 +17,19 @@ int remaining_value = 0;
 
 void setup() {
 
-  attachInterrupt(digitalPinToInterrupt(interrupt_pin), translate_received_transaction, CHANGE);
   Serial.begin(115200);
 
   while (!Serial);
 
-  Serial.println("LoRa Communication - Master");
+  Serial.println("LoRa Communication - Slave");
 
   if (!LoRa.begin(lora_frequency)) {
     Serial.println("LoRa Communication - Start Failed");
     while (1);
   }
-
+  
+  LoRa.onReceive(translate_received_transaction);
+  
 }
 
 // sending format
@@ -59,12 +60,10 @@ void loop() {
   
 }
 
-void translate_received_transaction() {
+void translate_received_transaction(int packet_size) {
   Serial.println("LoRa Communication - Incoming Transaction Interrupt");
 
   communication_state = 2;
-
-  int packet_size = LoRa.parsePacket();
 
   if (packet_size) {
     String received_transaction = "";
